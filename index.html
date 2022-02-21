@@ -5,31 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      .day {
+        background-color: aquamarine;
+      }
+
+      .night {
+        background-color: blueviolet;
+      }
+    </style>
   </head>
-  <body>
+  <body id="main">
     <button id="button">OK</button>
   </body>
   <script>
-    const buttonEl = document.querySelector("#button");
     let initialState = {
-      theme: "day"
+      theme: "day",
     };
 
     let state = {
-      ...initialState
+      ...initialState,
     };
 
-    buttonEl.classList.add(state.theme);
+    const buttonEl = document.querySelector("#button");
+    const bodyEl = document.querySelector("#main");
+
+    bodyEl.classList.add(state.theme);
 
     buttonEl.addEventListener("click", () => {
       if (state.theme === "day") {
         state.theme = "night";
-        buttonEl.classList.remove("day");
-        buttonEl.classList.add("night");
+        bodyEl.classList.remove("day");
+        bodyEl.classList.add("night");
       } else {
         state.theme = "day";
-        buttonEl.classList.remove("night");
-        buttonEl.classList.add("day");
+        bodyEl.classList.remove("night");
+        bodyEl.classList.add("day");
       }
     });
   </script>
