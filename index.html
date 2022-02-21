@@ -7,16 +7,27 @@
     <title>Document</title>
   </head>
   <body>
-    <button id="button" class="day">OK</button>
+    <button id="button">OK</button>
   </body>
   <script>
     const buttonEl = document.querySelector("#button");
+    let initialState = {
+      theme: "day"
+    };
+
+    let state = {
+      ...initialState
+    };
+
+    buttonEl.classList.add(state.theme);
 
     buttonEl.addEventListener("click", () => {
-      if (buttonEl.className === "day") {
+      if (state.theme === "day") {
+        state.theme = "night";
         buttonEl.classList.remove("day");
         buttonEl.classList.add("night");
       } else {
+        state.theme = "day";
         buttonEl.classList.remove("night");
         buttonEl.classList.add("day");
       }
