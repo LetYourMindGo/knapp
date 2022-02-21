@@ -6,17 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      .day {
+      .main.day {
         background-color: aquamarine;
       }
 
-      .night {
+      .main.night {
         background-color: blueviolet;
       }
+
+      .button.day {
+        background-color: darkgreen;
+      }
+
+      .button.night {
+        background-color: red;
+      }
+
+
     </style>
   </head>
-  <body id="main">
-    <button id="button">OK</button>
+  <body id="main" class="main">
+    <button id="button" class="button">OK</button>
   </body>
   <script>
     let initialState = {
@@ -31,16 +41,21 @@
     const bodyEl = document.querySelector("#main");
 
     bodyEl.classList.add(state.theme);
+    buttonEl.classList.add(state.theme);
 
     buttonEl.addEventListener("click", () => {
       if (state.theme === "day") {
         state.theme = "night";
         bodyEl.classList.remove("day");
         bodyEl.classList.add("night");
+        buttonEl.classList.remove("day");
+        buttonEl.classList.add("night");
       } else {
         state.theme = "day";
         bodyEl.classList.remove("night");
         bodyEl.classList.add("day");
+        buttonEl.classList.remove("night");
+        buttonEl.classList.add("day");
       }
     });
   </script>
